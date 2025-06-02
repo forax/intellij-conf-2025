@@ -60,7 +60,7 @@ public class MandelbrotSet {
     return image;
   }
 
-  private static int getColor(int iteration) {
+  /*private static int getColor(int iteration) {
     if (iteration == MAX_ITERATIONS) {
       return Color.BLACK.getRGB();
     }
@@ -69,6 +69,21 @@ public class MandelbrotSet {
     var gradient = (int) (255 * brightness);
     var value = Math.clamp(gradient, 0, 255);
     return new Color(value, value, value).getRGB();
+  }*/
+
+  private static int getColor(int iteration) {
+    if (iteration == MAX_ITERATIONS) {
+      return Color.BLACK.getRGB();
+    }
+
+    var smooth = iteration + 1 - Math.log(Math.log(ESCAPE_RADIUS)) / Math.log(2);
+    var t = smooth / MAX_ITERATIONS;
+    var hue = (float) ((360 * t) % 360) / 360f;  // Cycle through hues
+    var saturation = 0.8f + 0.2f * (float) Math.sin(8 * Math.PI * t);  // Vary saturation
+    var brightness = 0.5f + 0.5f * (float) Math.sin(4 * Math.PI * t);  // Vary brightness
+
+    var color = Color.getHSBColor(hue, saturation, brightness);
+    return color.getRGB();
   }
 
 // export JAVA_HOME=/Users/forax/valhalla-live2/valhalla/build/macosx-aarch64-server-release/images/jdk/
@@ -82,9 +97,12 @@ public class MandelbrotSet {
     var yMax = 1.5;
 
     var path = Path.of("mandelbrot.png");
+    var start = System.currentTimeMillis();
     var image = computeImage(width, height, xMin, xMax, yMin, yMax);
+    var end = System.currentTimeMillis();
     try(var output = Files.newOutputStream(path)) {
       ImageIO.write(image, "png", output);
     }
+    System.out.println("generated in: " + (end -start) + " ms");
   }
 }

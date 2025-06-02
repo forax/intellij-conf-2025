@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 // export JAVA_HOME=/Users/forax/valhalla-live2/valhalla/build/macosx-aarch64-server-release/images/jdk/
 // $JAVA_HOME/bin/java -jar target/benchmarks.jar
-/*@Warmup(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
 @Fork(value = 1, jvmArgs = { "--enable-preview" })
 @BenchmarkMode(Mode.AverageTime)
@@ -40,7 +40,7 @@ public class ScalarizationBench {
   double yMin = -1.5;
   double yMax = 1.5;
 
-  @Benchmark
+  //@Benchmark
   public int computeMandelbrot() {
     var sum = 0;
     for (int row = 0; row < height; row++) {
@@ -53,7 +53,7 @@ public class ScalarizationBench {
     return sum;
   }
 
-  @Benchmark
+  //@Benchmark
   public int computeMandelbrotPrimitive() {
     var sum = 0;
     for (int row = 0; row < height; row++) {
@@ -65,5 +65,5 @@ public class ScalarizationBench {
     }
     return sum;
   }
-}*/
+}
 
