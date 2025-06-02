@@ -20,12 +20,12 @@ import java.util.concurrent.TimeUnit;
 
 // value
 // Benchmark                                      Mode  Cnt    Score   Error  Units
-// ScalarizationBench.computeMandelbrot           avgt    5  258.697 ± 1.038  ms/op
-// ScalarizationBench.computeMandelbrotPrimitive  avgt    5  259.169 ± 1.162  ms/op
+// ScalarizationBench.computeMandelbrot           avgt    5  257,368 ± 0,916  ms/op
+// ScalarizationBench.computeMandelbrotPrimitive  avgt    5  257,344 ± 0,821  ms/op
 
 // export JAVA_HOME=/Users/forax/valhalla-live2/valhalla/build/macosx-aarch64-server-release/images/jdk/
 // $JAVA_HOME/bin/java -jar target/benchmarks.jar
-@Warmup(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
+/*@Warmup(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 2, timeUnit = TimeUnit.SECONDS)
 @Fork(value = 1, jvmArgs = { "--enable-preview" })
 @BenchmarkMode(Mode.AverageTime)
@@ -65,4 +65,5 @@ public class ScalarizationBench {
     }
     return sum;
   }
-}
+}*/
+
