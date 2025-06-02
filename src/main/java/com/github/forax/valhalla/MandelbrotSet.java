@@ -60,17 +60,6 @@ public class MandelbrotSet {
     return image;
   }
 
-  /*private static int getColor(int iteration) {
-    if (iteration == MAX_ITERATIONS) {
-      return Color.BLACK.getRGB();
-    }
-    var smooth = iteration + 1 - Math.log(Math.log(ESCAPE_RADIUS)) / Math.log(2);
-    var brightness = Math.pow(smooth / MAX_ITERATIONS, 0.5);
-    var gradient = (int) (255 * brightness);
-    var value = Math.clamp(gradient, 0, 255);
-    return new Color(value, value, value).getRGB();
-  }*/
-
   private static int getColor(int iteration) {
     if (iteration == MAX_ITERATIONS) {
       return Color.BLACK.getRGB();
